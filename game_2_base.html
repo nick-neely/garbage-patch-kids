@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GAME 2</title>
+    <title>Frogger</title>
     <link rel="stylesheet" href="game_2_style.css">
+    <script src="game_2_script.js" defer></script>
 </head>
 <body>
     <header>
@@ -17,18 +18,21 @@
             </ul>
         </nav>
     </header>
-    <h1>GAME 2</h1>
+    
     <!--make so when full screen is clicked, canvas resizes to larger-->
-    <canvas id="game_1_canvas"></canvas>
+    <div id="canvas-cont">
+        <h1 class="game_title">Frogger</h1>
+        <canvas id="game_2_canvas"></canvas>
+    </div>
     <ul>
-        <li><button class="game-menu">Play Game</button></li>
-        <li><button class="game-menu">Full Screen</button></li>
+        <li class="game-menu"><button>Play Game</button></li>
+        <li class="game-menu"><button>Full Screen</button></li>
     </ul>
    
     <div class="rulesDropdown">
-        <button class="rules">⇩ Rules ⇩</button>
+        <button id="rules">↓ Show Instructions ↓</button>
         <div class="rulesContent">
-            <p>insert game rules here</p>
+            
         </div>
     </div>
 </body>

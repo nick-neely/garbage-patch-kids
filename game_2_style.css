@@ -1,3 +1,8 @@
+@font-face {
+    font-family: frogger;
+    src: url(https://www.fontspace.com/games-font-f27973);
+  }
+
 html, body {
     overflow: hidden;
     position: fixed;
@@ -8,20 +13,30 @@ html, body {
 }
 
 body{
-    background-image: linear-gradient(to bottom right, rgb(13, 67, 13), rgb(13, 250, 13));
+    background-image: linear-gradient(to bottom right, rgb(13, 67, 13), rgb(134, 180, 134));
+
+    
+}
+#canvas-cont{
+    text-align: center;
 }
 
-#game_1_canvas{
+#game_2_canvas {
     width: 500px;
-    height: 500px;
+    height: 300px;
     border: black solid 5px;
+    margin: auto;
 }
 
-.rules {
+#rules {
     border:none;
     background: none;
 }
 
 .game-menu{
     list-style: none;
+}
+
+.game-title{
+    font-family: frogger;
 }
