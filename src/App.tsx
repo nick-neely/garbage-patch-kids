@@ -1,37 +1,51 @@
 import "./App.css";
 import NavBar from "./components/NavBar";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 
 import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import ErrorPage from "./pages/ErrorPage";
 import Game1 from "./pages/Game1";
 
+function Layout() {
+  return (
+    <>
+      <NavBar />
+      <Outlet />
+    </>
+  );
+}
+
 // Router with routes
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <HomePage />,
+    element: <Layout />,
     errorElement: <ErrorPage />,
-  },
-  {
-    path: "about",
-    element: <AboutPage />,
-  },
-  {
-    path: "*",
-    element: <ErrorPage />,
-  },
-  {
-    path: "game1",
-    element: <Game1 />,
+    children: [
+      {
+        path: "/",
+        element: <HomePage />,
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "about",
+        element: <AboutPage />,
+      },
+      {
+        path: "*",
+        element: <ErrorPage />,
+      },
+      {
+        path: "game1",
+        element: <Game1 />,
+      },
+    ],
   },
 ]);
 
 function App() {
   return (
     <div>
-      <NavBar />
       <RouterProvider router={router} />
     </div>
   );

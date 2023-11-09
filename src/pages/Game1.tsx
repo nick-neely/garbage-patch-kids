@@ -12,9 +12,7 @@ const Game1 = () => {
       </div>
       <div className={SnakeCss["ArcadeScreen"]}>
         <canvas
-          className={[SnakeCss["snake-canvas"], SnakeCss["ArcadesScreen"]].join(
-            " "
-          )}
+          className={`${SnakeCss["snake-canvas"]} ${SnakeCss["ArcadeScreen"]}`}
         ></canvas>
       </div>
     </div>
