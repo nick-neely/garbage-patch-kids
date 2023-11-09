@@ -1,4 +1,6 @@
+import PlayButton from "../components/PlayButton";
 import tetrisCss from "../styles/tetris.module.css"
+ 
 
 const Game2 = () => {
     return (
@@ -8,7 +10,7 @@ const Game2 = () => {
             <canvas id={tetrisCss["game_2_canvas"]}></canvas>
         </div>
         <ul>
-            <li className={tetrisCss["game-menu"]}><button>Play Game</button></li>
+            <li className={tetrisCss["game-menu"]}><PlayButton/></li>
             <li className="game-menu"><button>Full Screen</button></li>
         </ul>
 
