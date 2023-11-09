@@ -1,4 +1,5 @@
 
+import PlayButton from "../components/PlayButton";
 import SnakeCss from "../styles/snake.module.css";
 
 const Game1 = () => {
@@ -15,6 +16,7 @@ const Game1 = () => {
         <canvas
           className={`${SnakeCss["snake-canvas"]} ${SnakeCss["ArcadeScreen"]}`}
         ></canvas>
+        <PlayButton />
       </div>
     </div>
   );
