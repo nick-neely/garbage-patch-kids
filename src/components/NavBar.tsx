@@ -31,10 +31,10 @@ const NavBar = () => {
               <Link to="/game1">Game 1</Link>
             </li>
             <li>
-              <a>Game 2</a>
+              <Link to="/game2">Game 2</Link>
             </li>
             <li>
-              <a>Game 3</a>
+              <Link to="/game3">Game 3</Link>
             </li>
           </ul>
         </div>
