@@ -22,3 +22,5 @@ const view = new CanvasView('#playField')
 view.initPlayButton(startGame); 
 
 export default Game3;
+
+//next steps
