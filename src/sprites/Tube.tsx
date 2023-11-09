@@ -25,7 +25,7 @@ export class Tube {
         return this.tubeHeight;
      }
 
-     get tubePosition(): Vector{
+     get pos(): Vector{
         return this.position;
      }
 
@@ -37,7 +37,7 @@ export class Tube {
          this.tubeEnergy = energy
      }
 
-     get img(): number{
-        return this.tubeWidth;
+     get img(): HTMLImageElement{
+        return this.tubeImage;
      }
 }
