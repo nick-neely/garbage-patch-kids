@@ -1,22 +1,24 @@
-import tetrisCss from "../styles/game_2_style.css"
+import tetrisCss from "../styles/tetris.module.css"
 
 const Game2 = () => {
     return (
-        <div id="canvas-cont">
-            <h1 class="game_title">Tetris</h1>
-            <canvas id="game_2_canvas"></canvas>
+        <body>
+        <div id={tetrisCss["canvas-cont"]}>
+            <h1 className={tetrisCss["game_title"]}>Tetris</h1>
+            <canvas id={tetrisCss["game_2_canvas"]}></canvas>
         </div>
         <ul>
-            <li class="game-menu"><button>Play Game</button></li>
-            <li class="game-menu"><button>Full Screen</button></li>
+            <li className={tetrisCss["game-menu"]}><button>Play Game</button></li>
+            <li className="game-menu"><button>Full Screen</button></li>
         </ul>
 
-        <div class="rulesDropdown">
-            <button id="rules">↓ Show Instructions ↓</button>
-            <div class="rulesContent">
+        <div className={tetrisCss["rulesDropdown"]}>
+            <button id={tetrisCss["rules"]}>↓ Show Instructions ↓</button>
+            <div className ={tetrisCss["rulesContent"]}>
         
             </div>
         </div>
+        </body>
     );
   };
 
