@@ -1,3 +1,4 @@
+
 import SnakeCss from "../styles/snake.module.css";
 
 const Game1 = () => {
