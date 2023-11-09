@@ -9,7 +9,6 @@ import Game1 from "./pages/Game1";
 import Game2 from "./pages/Game2";
 import Game3 from "./pages/Game3";
 
-
 function Layout() {
   return (
     <>

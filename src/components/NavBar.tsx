@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-
+import logo from "../assets/logo.svg";
+import menu from "../assets/menu.svg";
 
 const NavBar = () => {
   return (
@@ -38,6 +39,11 @@ const NavBar = () => {
           </ul>
         </div>
         <Link to="/" className="btn btn-ghost normal-case text-xl">
+          <img
+            src={logo}
+            alt="logo"
+            style={{ width: "60px", height: "auto" }}
+          />
           Arcade
         </Link>
       </div>
@@ -57,7 +63,7 @@ const NavBar = () => {
       <div className="navbar-end">
         <div className="dropdown dropdown-bottom dropdown-end">
           <label tabIndex={0} className="btn glass m-1">
-            Click
+            <img src={menu} alt="menu" className="w-8 h-8" />
           </label>
           <ul
             tabIndex={0}
