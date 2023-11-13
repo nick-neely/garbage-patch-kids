@@ -1,17 +1,16 @@
-const canvas = document.getElementById('game-display')
-console.log(canvas)
-const context = canvas.getContext('2d');
+const canvas = document.getElementById("myCanvas");
+const context = canvas.getContext("2d");
+
+const start = document.getElementById("start");
 
 const speed = "200";
 
-const directionArry = ["up", "down", "left", "right"];
-
 const randomInt = (max) => Math.floor(Math.random() * Math.floor(max));
 const getInnerCanvas = (min, max) => {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
 
 const mult = 10;
 const useCanvas = {
@@ -19,8 +18,8 @@ const useCanvas = {
     x: 10,
     y: 10
   },
-  penColor: (color) => (ctx.fillStyle = color),
-  fill: (x, y) => ctx.fillRect(x * mult, y * mult, mult, mult),
+  penColor: (color) => (context.fillStyle = color),
+  fill: (x, y) => context.fillRect(x * mult, y * mult, mult, mult)
 };
 
 const positionMatch = (pos1, pos2) => {
@@ -41,14 +40,14 @@ class Food {
   createFood() {
     Food.position = {
       x: randomInt(canvas.width),
-      y: randomInt(canvas.height),
+      y: randomInt(canvas.height)
     };
     if (arrayCheck(Snake.body, Food.position)) {
       Food.createFood();
     } else {
-      Food.draw(Food.pos);
+      Food.draw(Food.position);
     }
-  };
+  }
   draw(x, y) {
     useCanvas.penColor("red");
     useCanvas.fill(x, y);
@@ -56,11 +55,20 @@ class Food {
 }
 
 class Snake {
-  head = {};
+  head = {
+    x: 0,
+    y: 0,
+    getX() {
+      return this.x;
+    },
+    getY() {
+      return this.y;
+    }
+  };
   tail = (x) => (x = Snake.body[0]);
   direction = {
     current: "",
-    preffix: "",
+    preffix: ""
   };
   body = [];
   length = 5;
@@ -84,7 +92,7 @@ let move = (_) => {
     case "up":
       Snake.next = {
         x: Snake.head.x,
-        y: Snake.head.y - 1,
+        y: Snake.head.y - 1
       };
       crash = Snake.next.y < 0;
       Snake.direction.preffix = "up";
@@ -92,7 +100,7 @@ let move = (_) => {
     case "down":
       Snake.next = {
         x: Snake.head.x,
-        y: Snake.head.y + 1,
+        y: Snake.head.y + 1
       };
       crash = Snake.next.y == canvas.height;
       Snake.direction.preffix = "down";
@@ -100,7 +108,7 @@ let move = (_) => {
     case "left":
       Snake.next = {
         x: Snake.head.x - 1,
-        y: Snake.head.y,
+        y: Snake.head.y
       };
       crash = Snake.next.x == 0;
       Snake.direction.preffix = "left";
@@ -108,7 +116,7 @@ let move = (_) => {
     case "right":
       Snake.next = {
         x: Snake.head.x + 1,
-        y: Snake.head.y,
+        y: Snake.head.y
       };
       crash = Snake.next.x == canvas.width;
       Snake.direction.preffix = "right";
@@ -118,6 +126,7 @@ let move = (_) => {
   if (crash || arrayCheck(Snake.body, Snake.next)) {
     clearInterval(intv);
     startTransition.disabled = "";
+    document.getElementById("start").style.visibility = "visible";
     return;
   }
 
@@ -132,10 +141,10 @@ let move = (_) => {
 };
 
 const directional = {
-  up: Snake.draw.bind(null, { x: Snake.head.x, y: --Snake.head.y }),
-  down: Snake.draw.bind(null, { x: Snake.head.x, y: ++Snake.head.y }),
-  left: Snake.draw.bind(null, { x: --Snake.head.x, y: Snake.head.y }),
-  right: Snake.draw.bind(null, { x: ++Snake.head.x, y: Snake.head.y }),
+  up:    Snake.draw({ x:Snake.head.getX(),   y:--Snake.head.getY() }),
+  down:  Snake.draw({ x:Snake.head.getX(),   y:++Snake.head.getY() }),
+  left:  Snake.draw({ x:--Snake.head.getX(), y:Snake.head.getY()   }),
+  right: Snake.draw({ x:++Snake.head.getX(), y:Snake.head.getY()   })
 };
 
 const create = (_) => {
@@ -147,66 +156,55 @@ const create = (_) => {
 onkeydown = (e) => {
   switch (e.keyCode) {
     case 65:
-      if (
-        Snake.direction.preffix == "up" ||
-        Snake.direction.preffix == "down"
-      ) {
+      if (Snake.direction.preffix == "up" || Snake.direction.preffix == "down") {
         Snake.direction.current = "left";
       }
       break;
     case 87:
-      if (
-        Snake.direction.preffix == "left" ||
-        Snake.direction.preffix == "right"
-      ) {
+      if (Snake.direction.preffix == "left" || Snake.direction.preffix == "right") {
         Snake.direction.current = "up";
       }
       break;
     case 68:
-      if (
-        Snake.direction.preffix == "up" ||
-        Snake.direction.preffix == "down"
-      ) {
+      if (Snake.direction.preffix == "up" || Snake.direction.preffix == "down") {
         Snake.direction.current == "right";
       }
       break;
     case 83:
-      if (
-        Snake.direction.preffix == "left" ||
-        Snake.direction.preffix == "right"
-      ) {
+      if (Snake.direction.preffix == "left" || Snake.direction.preffix == "right") {
         Snake.direction.current = "down";
       }
       break;
   }
 };
 
-let intv;
+let interval;
 
-start.onClick = (_) => {
-  start.hidden = "hidden";
+start.addEventListener("click", function(){
+  console.log("clicked");
+  document.getElementById("start").style.visibility = "hidden";
   useCanvas.penColor("white");
-  context.fillRect(0,0,canvas.width, canvas.height);
+  context.fillRect(0, 0, canvas.width, canvas.height);
   Snake.body = [];
+
+  console.log(getInnerCanvas(0, 100))
 
   Snake.head = {
     x: getInnerCanvas(useCanvas.offset.x, useCanvas.width - useCanvas.offset.x),
     y: getInnerCanvas(useCanvas.offset.y, useCanvas.height - useCanvas.offset.y)
   };
 
-  Snake.direction.current = direction[randomInt(direction.length)];
+  Snake.direction.current = directional[randomInt(directional.length)];
   Food.createFood();
 
-  for (let i = 0; i < Snake.length; i++){
+  for (let i = 0; i < Snake.length; i++) {
     create();
   }
 
-  intv = setInterval(() => {
-    if(positionMatch(Snake.head, Food.position)) {
-        Snake.grow = true;
-        move();
+  interval = setInterval(() => {
+    if (positionMatch(Snake.head, Food.position)) {
+      Snake.grow = true;
+      move();
     }
   }, speed);
-};
-
-start.click();
+});

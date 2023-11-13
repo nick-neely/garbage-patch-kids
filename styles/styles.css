@@ -42,3 +42,11 @@ canvas{
 #ArcadesScreen{
     text-align: center;
 }
+
+#span-div{
+    margin-right: 50px;
+}
+
+span{
+    color: white;
+}
