@@ -1,38 +1,21 @@
-import  { CanvasView } from "../components/CanvasView";
+import FlappyCss from "../styles/flappybird.module.css";
 import PlayButton from "../components/PlayButton";
-import {Tube} from './sprites/Tube'
-
-
-const Game3 = () => {
+const Game3 = ()  => {
     return (
+        
         <body>
-            <div id="score"></div>
-            <h1>Welcome to Flappy Bird!!</h1>
+            <canvas>
+            <div className={FlappyCss['game']}></div>
+            <div className= {FlappyCss['block']}>Block</div>
+            <div className = {FlappyCss["hole"]}></div>
+            <div className ={FlappyCss["charcter"]}></div>
+            </canvas>
             <PlayButton  />
-            <canvas id = "playField"></canvas>
+            <script src="flappy_game.js"></script>
         </body>
     )
 };
 
-let gameOver = false;
-let score = 0;
-
-function setGameOver(view: CanvasView){
-    view.drawInfo
-    gameOver = false;
-}
-
-
-function gameLoop (
-    view: CanvasView,
-    tubes: Tube[],
-){}
-
-function startGame(view: CanvasView) {}
-
-const view = new CanvasView('#playField')
-
-view.initPlayButton(startGame); 
 
 export default Game3;
 
