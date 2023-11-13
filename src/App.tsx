@@ -59,6 +59,7 @@ function App() {
       <RouterProvider router={router} />
     </div>
   );
+    <div></div>
 }
 
 export default App;

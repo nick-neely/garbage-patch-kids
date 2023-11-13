@@ -28,13 +28,13 @@ const NavBar = () => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <Link to="/game1">Game 1</Link>
+              <Link to="/game1">Snake</Link>
             </li>
             <li>
               <Link to="/tetris">Tetris</Link>
             </li>
             <li>
-              <Link to="/game3">Game 3</Link>
+              <Link to="/game3">Flappy Bird</Link>
             </li>
           </ul>
         </div>
@@ -50,13 +50,13 @@ const NavBar = () => {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
           <li>
-            <Link to="/game1">Game 1</Link>
+            <Link to="/game1">Snake</Link>
           </li>
           <li>
             <Link to="/tetris">Tetris</Link>
           </li>
           <li>
-            <Link to="/game3">Game 3</Link>
+            <Link to="/game3">Flappy Bird</Link>
           </li>
         </ul>
       </div>
@@ -70,11 +70,14 @@ const NavBar = () => {
             className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Item 1</a>
+              <Link to="/game1">Snake</Link>
             </li>
             <li>
-              <a>Item 2</a>
+              <Link to="/game2">Tetris</Link>
             </li>
+            <li>
+            <Link to="/game3">Flappy Bird</Link>
+          </li>
           </ul>
         </div>
       </div>
