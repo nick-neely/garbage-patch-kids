@@ -38,14 +38,14 @@ const arrayCheck = (array, item) => {
 class Food {
   position = {};
   createFood() {
-    Food.position = {
+    newFood.position = {
       x: randomInt(canvas.width),
       y: randomInt(canvas.height)
     };
-    if (arrayCheck(Snake.body, Food.position)) {
-      Food.createFood();
+    if (arrayCheck(newSnake.body, newFood.position)) {
+      newFood.createFood();
     } else {
-      Food.draw(Food.position);
+      newFood.draw(newFood.position);
     }
   }
   draw(x, y) {
@@ -54,18 +54,20 @@ class Food {
   }
 }
 
+let changeAmnt;
+
 class Snake {
   head = {
     x: 0,
     y: 0,
-    getX() {
-      return this.x;
+    getX(changeAmnt) {
+      return this.x + changeAmnt;
     },
     getY() {
-      return this.y;
+      return this.y + changeAmnt;
     }
   };
-  tail = (x) => (x = Snake.body[0]);
+  tail = (x) => (x = newSnake.body[0]);
   direction = {
     current: "",
     preffix: ""
@@ -74,105 +76,108 @@ class Snake {
   length = 5;
   draw({ x, y }) {
     useCanvas.penColor("green");
-    Snake.body.push({ x, y });
+    newSnake.body.push({ x, y });
     useCanvas.fill(x, y);
   }
   erase({ x, y }) {
     useCanvas.penColor("white");
-    Snake.body.splice(0, 1);
+    newSnake.body.splice(0, 1);
     useCanvas.fill(x, y);
   }
   next = {};
 }
 
+const newSnake = new Snake();
+const newFood = new Food();
+
 let move = (_) => {
   let crash;
 
-  switch (Snake.direction.current) {
+  switch (newSnake.direction.current) {
     case "up":
-      Snake.next = {
-        x: Snake.head.x,
-        y: Snake.head.y - 1
+      newSnake.next = {
+        x: newSnake.head.x,
+        y: newSnake.head.y - 1
       };
-      crash = Snake.next.y < 0;
-      Snake.direction.preffix = "up";
+      crash = newSnake.next.y < 0;
+      newSnake.direction.preffix = "up";
       break;
     case "down":
-      Snake.next = {
-        x: Snake.head.x,
-        y: Snake.head.y + 1
+      newSnake.next = {
+        x: newSnake.head.x,
+        y: newSnake.head.y + 1
       };
-      crash = Snake.next.y == canvas.height;
-      Snake.direction.preffix = "down";
+      crash = newSnake.next.y == canvas.height;
+      newSnake.direction.preffix = "down";
       break;
     case "left":
-      Snake.next = {
-        x: Snake.head.x - 1,
-        y: Snake.head.y
+      newSnake.next = {
+        x: newSnake.head.x - 1,
+        y: newSnake.head.y
       };
-      crash = Snake.next.x == 0;
-      Snake.direction.preffix = "left";
+      crash = newSnake.next.x == 0;
+      newSnake.direction.preffix = "left";
       break;
     case "right":
-      Snake.next = {
-        x: Snake.head.x + 1,
-        y: Snake.head.y
+      newSnake.next = {
+        x: newSnake.head.x + 1,
+        y: newSnake.head.y
       };
-      crash = Snake.next.x == canvas.width;
-      Snake.direction.preffix = "right";
+      crash = newSnake.next.x == canvas.width;
+      newSnake.direction.preffix = "right";
       break;
   }
 
-  if (crash || arrayCheck(Snake.body, Snake.next)) {
+  if (crash || arrayCheck(newSnake.body, newSnake.next)) {
     clearInterval(intv);
     startTransition.disabled = "";
     document.getElementById("start").style.visibility = "visible";
     return;
   }
 
-  Snake.draw((Snake.head = Snake.next));
-  if (Snake.grow) {
-    Snake.grow = false;
+  newSnake.draw((newSnake.head = newSnake.next));
+  if (newSnake.grow) {
+    newSnake.grow = false;
     score.innerText = Number(score.innerText) + 1;
-    Food.createFood();
+    newFood.createFood();
   } else {
-    Snake.erase(Snake.tail());
+    newSnake.erase(newSnake.tail());
   }
 };
 
 const directional = {
-  up:    Snake.draw({ x:Snake.head.getX(),   y:--Snake.head.getY() }),
-  down:  Snake.draw({ x:Snake.head.getX(),   y:++Snake.head.getY() }),
-  left:  Snake.draw({ x:--Snake.head.getX(), y:Snake.head.getY()   }),
-  right: Snake.draw({ x:++Snake.head.getX(), y:Snake.head.getY()   })
+  up:    newSnake.draw({ x:newSnake.head.getX(0),   y:newSnake.head.getY(-1)}),
+  down:  newSnake.draw({ x:newSnake.head.getX(0),   y:newSnake.head.getY(1) }),
+  left:  newSnake.draw({ x:newSnake.head.getX(-1),  y:newSnake.head.getY(0) }),
+  right: newSnake.draw({ x:newSnake.head.getX(1),   y:newSnake.head.getY(0) })
 };
 
 const create = (_) => {
-  if (Snake.direction.current in directional) {
-    directional[Snake.direction.current]();
+  if (newSnake.direction.current in directional) {
+    directional[newSnake.direction.current]();
   }
 };
 
 onkeydown = (e) => {
   switch (e.keyCode) {
     case 65:
-      if (Snake.direction.preffix == "up" || Snake.direction.preffix == "down") {
-        Snake.direction.current = "left";
+      if (newSnake.direction.preffix == "up" || newSnake.direction.preffix == "down") {
+        newSnake.direction.current = "left";
       }
       break;
     case 87:
-      if (Snake.direction.preffix == "left" || Snake.direction.preffix == "right") {
-        Snake.direction.current = "up";
+      if (newSnake.direction.preffix == "left" || newSnake.direction.preffix == "right") {
+        newSnake.direction.current = "up";
       }
       break;
     case 68:
-      if (Snake.direction.preffix == "up" || Snake.direction.preffix == "down") {
-        Snake.direction.current == "right";
+      if (newSnake.direction.preffix == "up" || newSnake.direction.preffix == "down") {
+        newSnake.direction.current == "right";
       }
       break;
     case 83:
-      if (Snake.direction.preffix == "left" || Snake.direction.preffix == "right") {
-        Snake.direction.current = "down";
+      if (newSnake.direction.preffix == "left" || newSnake.direction.preffix == "right") {
+        newSnake.direction.current = "down";
       }
       break;
   }
@@ -185,25 +190,27 @@ start.addEventListener("click", function(){
   document.getElementById("start").style.visibility = "hidden";
   useCanvas.penColor("white");
   context.fillRect(0, 0, canvas.width, canvas.height);
-  Snake.body = [];
+  newSnake.body = [];
 
   console.log(getInnerCanvas(0, 100))
 
-  Snake.head = {
+  newSnake.head = {
     x: getInnerCanvas(useCanvas.offset.x, useCanvas.width - useCanvas.offset.x),
     y: getInnerCanvas(useCanvas.offset.y, useCanvas.height - useCanvas.offset.y)
   };
 
-  Snake.direction.current = directional[randomInt(directional.length)];
-  Food.createFood();
+  console.log(newSnake.head)
 
-  for (let i = 0; i < Snake.length; i++) {
+  newSnake.direction.current = directional[randomInt(directional.length)];
+  newFood.createFood();
+
+  for (let i = 0; i < newSnake.length; i++) {
     create();
   }
 
   interval = setInterval(() => {
-    if (positionMatch(Snake.head, Food.position)) {
-      Snake.grow = true;
+    if (positionMatch(newSnake.head, newFood.position)) {
+      newSnake.grow = true;
       move();
     }
   }, speed);
