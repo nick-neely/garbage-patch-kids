@@ -1,5 +1,6 @@
 import Phaser from "phaser";
 import { useEffect } from "react";
+import TetrisCss from "../styles/tetris.module.css"
 
 class TetrisScene extends Phaser.Scene {
   constructor() {
@@ -7,7 +8,7 @@ class TetrisScene extends Phaser.Scene {
   }
 
   preload() {
-    // Load your Tetris assets here
+    // Load assets
     this.load.image("I", "assets/tetris/shapes/I.png");
     this.load.image("J", "assets/tetris/shapes/J.png");
     this.load.image("L", "assets/tetris/shapes/L.png");
@@ -21,7 +22,7 @@ class TetrisScene extends Phaser.Scene {
 
   create() {
     // Create game objects and set up the board
-    this.add.image(384, 704, "board"); // center of the board
+    this.add.image(192, 352, "board"); // center of the board
   }
 
   update() {
@@ -33,8 +34,8 @@ const TetrisGame = () => {
   useEffect(() => {
     const config = {
       type: Phaser.AUTO,
-      width: 768, // Board's width
-      height: 1408, // Board's height
+      width: 386, // Board's width
+      height: 704, // Board's height
       parent: "tetris-game-container",
       scene: [TetrisScene],
     };
@@ -46,7 +47,7 @@ const TetrisGame = () => {
     };
   }, []);
 
-  return <div id="tetris-game-container"></div>;
+  return <div id="tetris-game-container" className={TetrisCss["tetris-game"]}></div>;
 };
 
 export default TetrisGame;
