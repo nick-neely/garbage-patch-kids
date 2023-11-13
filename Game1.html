@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8" / />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" / />
+    <title>Play Snake</title>
+    <link rel="stylesheet" href="styles/styles.css" / />
+    <audio src="music/SnakeMenuSong.wav" loop id="MenuTheme" autoplay></audio>
+    <!--autoplay-->
+      <audio src="music/SnakeMenuSong.wav" loop id="MenuTheme" autoplay></audio>
+    <!--autoplay-->
+  </head>
+    <header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="Game1.html">Snake</a></li>
+            <li><a href="#movies">Frogger</a></li>
+            <li><a href="#events">Game 3</a></li>
+        </ul>
+    </nav>
+  </header>
+  <body>
+    <div>
+      <img src="images/snekbanner.png" alt="snekbanner" />
+    </div>
+    <div id="root">
+      <div id="ArcadesScreen">
+        <canvas id="myCanvas"></canvas>
+        <div id="span-div">
+          <button id="start">Start</button>
+          <span> Score: <span id="score">0</span></span>
+        </div>
+      </div>
+      <script src="/src/JS/GameOne.js"></script>
+    </div>
+  </body>
+</html>
