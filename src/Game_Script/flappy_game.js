@@ -19,13 +19,11 @@ setInterval(function(){
     character.style.top = (characterTop+3)+"px";
     }
     var blockLeft = parseInt(window.getComputedStyle(block).getPropertyValue("left"));
-    var characterTop = 
-    parseInt(window.getComputedStyle(character).getPropertyValue("top"));
     var holeTop = parseInt(window.getComputedStyle(hole).getPropertyValue("top"));
     var cTop = -(500-characterTop);
     if((characterTop> 480)||((blockLeft< 20)&&(blockLeft>-50)&&((cTop<holeTop)||(cTop>holeTop+130)))){
-        alert("Game Over" +counter);
-        character.style.top * 100 + "px"
+        alert("Game Over" +(counter-1));
+        character.style.top = 100 + "px"
         counter=0;
     }
 },10);

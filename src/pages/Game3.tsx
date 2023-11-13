@@ -1,14 +1,18 @@
 import FlappyCss from "../styles/flappybird.module.css";
 import PlayButton from "../components/PlayButton";
+import React from "react";
+startGame(){
+
+}
 const Game3 = ()  => {
     return (
-        
+    
         <body>
             <canvas>
-            <div className={FlappyCss['game']}></div>
-            <div className= {FlappyCss['block']}>Block</div>
-            <div className = {FlappyCss["hole"]}></div>
-            <div className ={FlappyCss["charcter"]}></div>
+            <div id={FlappyCss['game']}></div>
+            <div id= {FlappyCss['block']}>Block</div>
+            <div id = {FlappyCss["hole"]}></div>
+            <div id ={FlappyCss["charcter"]}></div>
             </canvas>
             <PlayButton  />
             <script src="flappy_game.js"></script>
