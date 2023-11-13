@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import AboutPage from "./pages/AboutPage";
 import ErrorPage from "./pages/ErrorPage";
 import Game1 from "./pages/Game1";
+import Game2 from "./pages/Game2";
 import Game3 from "./pages/Game3";
 import TetrisGame from "./pages/TetrisGame";
 
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
         element: <TetrisGame />,
       },
       {
+        path: "game2",
+        element: <Game2 />,
+      },
+      {
         path: "game3",
         element: <Game3 />,
       },
@@ -59,7 +64,7 @@ function App() {
       <RouterProvider router={router} />
     </div>
   );
-    <div></div>
+  <div></div>;
 }
 
 export default App;
