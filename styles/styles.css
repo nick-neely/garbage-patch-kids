@@ -1,6 +1,7 @@
 body{
     font-family:Arial, Helvetica, sans-serif;
-    justify-content: center;
+    display: flex;
+    flex-direction: column;
     /* background-color: rgb(36, 34, 34); */
     background-image: url("../images/DatailedArcade2.png");
     background-repeat: no-repeat;
@@ -30,6 +31,7 @@ li{
 }
 
 canvas{
+    border: solid black 1px;
     background-color: white;
     margin-top: 50px;
     margin-right: 20px;
