@@ -34,12 +34,12 @@ function createGrid(rows: number, cols: number): number[][] {
       grid[row][col] = 0; // 0 will represent an empty square
     }
   }
-  
 
   return grid;
 }
 
 class TetrisScene extends Phaser.Scene {
+  private cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
   // Define the current Tetromino
   private currentTetromino: Phaser.GameObjects.Sprite | null = null;
 
@@ -134,6 +134,16 @@ class TetrisScene extends Phaser.Scene {
     if (this.elapsedSeconds >= 1) {
       this.spawnTetromino();
       this.elapsedSeconds = 0;
+    }
+
+    if (this.cursors?.left.isDown) {
+      // Move Tetromino left
+    }
+    if (this.cursors?.right.isDown) {
+      // Move Tetromino right
+    }
+    if (this.cursors?.down.isDown) {
+      // Move Tetromino down
     }
   }
 
