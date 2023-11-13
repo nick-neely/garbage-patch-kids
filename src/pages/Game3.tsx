@@ -1,9 +1,7 @@
 import FlappyCss from "../styles/flappybird.module.css";
 import PlayButton from "../components/PlayButton";
 import React from "react";
-startGame(){
 
-}
 const Game3 = ()  => {
     return (
     
