@@ -116,8 +116,8 @@ class TetrisScene extends Phaser.Scene {
         const x = col * cellSize + cellSize / 2 + xOffset;
         const y = row * cellSize + cellSize / 2 + yOffset;
         const rect = this.add.rectangle(x, y, cellSize, cellSize);
-        rect.setStrokeStyle(borderWidth, 0xffffff); // Set the border color and width
-        gridGraphics.add(rect);
+        // rect.setStrokeStyle(borderWidth, 0xffffff); // Set the border color and width
+        // gridGraphics.add(rect);
       }
     }
   }
