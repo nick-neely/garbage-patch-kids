@@ -6,14 +6,19 @@ const Game3 = ()  => {
     return (
     
         <body>
-            <canvas>
-            <div id={FlappyCss['game']}></div>
-            <div id= {FlappyCss['block']}>Block</div>
-            <div id = {FlappyCss["hole"]}></div>
-            <div id ={FlappyCss["charcter"]}></div>
-            </canvas>
-            <PlayButton  />
-            <script src="flappy_game.js"></script>
+            <div id={FlappyCss["flappy-cont"]}>
+                <div id={FlappyCss["arcade-screen"]}>
+                <canvas id={FlappyCss["canvas"]}>
+                </canvas>
+                    <div id={FlappyCss['game']}></div>
+                    <div id= {FlappyCss['block']}>Block</div>
+                    <div id = {FlappyCss["hole"]}></div>
+                    <div id ={FlappyCss["charcter"]}></div>
+                
+                <PlayButton/>
+                </div>
+            </div>
+            <script src="flappy_game.js"></script>    
         </body>
     )
 };

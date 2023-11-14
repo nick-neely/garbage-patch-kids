@@ -1,7 +1,9 @@
+import HomePageCSS from "../styles/homeoage.module.css";
+
 const HomePage = () => {
   return (
-    <div>
-      HomePage
+    <div className={HomePageCSS["home-container"]}>
+      
     </div>
   );
 };
