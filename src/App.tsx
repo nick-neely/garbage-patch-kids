@@ -8,6 +8,7 @@ import ErrorPage from "./pages/ErrorPage";
 import Game1 from "./pages/Game1";
 import Game2 from "./pages/Game2";
 import Game3 from "./pages/Game3";
+import TetrisGame from "./pages/TetrisGame";
 
 function Layout() {
   return (
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
         element: <Game1 />,
       },
       {
+        path: "tetris",
+        element: <TetrisGame />,
+      },
+      {
         path: "game2",
         element: <Game2 />,
       },
@@ -51,14 +56,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-  {
-    path: "game2",
-    element: <Game2 />,
-  },
-  {
-    path: "game3",
-    element: <Game3 />,
-  },
 ]);
 
 function App() {
@@ -67,7 +64,7 @@ function App() {
       <RouterProvider router={router} />
     </div>
   );
-    <div></div>
+  <div></div>;
 }
 
 export default App;
