@@ -1,37 +1,41 @@
-#tetris-cont{
-    font-family: Arial, Helvetica, sans-serif;
-    background-image: url("../../images/tetrisback.png");
-    width: 100%;
-    height: 100vh; 
-    /* justify-content: center; */
-    background-position-x: center;
+#tetris-cont {
+  font-family: Arial, Helvetica, sans-serif;
+  background-image: url("../../images/tetrisback.png");
+  width: 100%;
+  height: 100vh;
+  /* justify-content: center; */
+  background-position-x: center;
+}
 @font-face {
-    font-family: tetris;
-    src: url(https://www.fontspace.com/games-font-f27973);
-  }
-
-.html, .body {
-    overflow: hidden;
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    margin: 0px;
-    padding: 0px;
+  font-family: tetris;
+  src: url(https://www.fontspace.com/games-font-f27973);
 }
 
-.body{
-    background-image: linear-gradient(to bottom right, rgb(13, 67, 13), rgb(134, 180, 134));
-
-    
+.html,
+.body {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
 }
-.canvas-cont{
-    text-align: center;
+
+.body {
+  background-image: linear-gradient(
+    to bottom right,
+    rgb(13, 67, 13),
+    rgb(134, 180, 134)
+  );
+}
+.canvas-cont {
+  text-align: center;
 }
 
 #game_2_canvas {
-    width: 270px;
-    height: 180px;
-    background-color: black;
-    margin: 170px auto;
-    text-align: center;
+  width: 270px;
+  height: 180px;
+  background-color: black;
+  margin: 170px auto;
+  text-align: center;
 }
